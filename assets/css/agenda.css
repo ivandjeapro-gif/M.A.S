@@ -1,0 +1,170 @@
+/* =========================================================
+   Agenda personnel + calendrier
+   ========================================================= */
+
+.agenda-layout { display: grid; grid-template-columns: minmax(0, 1fr) 318px; gap: 22px; margin-top: 24px; align-items: start; }
+.agenda-layout.is-chooser { grid-template-columns: minmax(0, 1fr) 500px; }
+
+.cal-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px 24px 18px; }
+.cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.cal-head h2 { font-family: var(--serif); font-size: 25px; font-weight: 400; color: var(--ink); }
+.cal-nav { display: flex; align-items: center; gap: 8px; }
+.cal-nav button {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  height: 30px;
+  padding: 0 12px;
+  font-size: 12px;
+  color: var(--body);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cal-nav button:hover { border-color: #d2cec4; }
+.cal-nav .icon { width: 14px; height: 14px; }
+.cal-nav .is-current { background: #f7f6f2; }
+.cal-nav .is-hint { color: var(--muted); background: #fff; }
+
+.cal-week, .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+.cal-week span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding: 9px 0 11px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.cal-cell {
+  min-height: 104px;
+  border-bottom: 1px solid var(--line-soft);
+  border-right: 1px solid var(--line-soft);
+  padding: 9px 8px 7px;
+  position: relative;
+  cursor: pointer;
+  background: #fff;
+  transition: background .15s ease;
+}
+.cal-cell:nth-child(7n) { border-right: 0; }
+.cal-cell:hover { background: #fbfaf6; }
+.cal-cell.is-out { background: #fcfcfa; }
+.cal-cell.is-out .cal-daynum { color: #c2c6cb; }
+.cal-cell.is-selected { background: var(--gold-tint); }
+.cal-cell.is-selected::after { content: ""; position: absolute; inset: 0; border: 1px solid #dcc28a; pointer-events: none; }
+.cal-daynum {
+  width: 24px; height: 24px;
+  display: grid; place-items: center;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--body);
+  border-radius: 50%;
+  margin-bottom: 3px;
+}
+.cal-cell.is-today .cal-daynum { border: 1px solid var(--navy); font-weight: 600; color: var(--navy); }
+.cal-events { display: grid; gap: 3px; margin-top: 2px; }
+.cal-event {
+  font-size: 10.5px;
+  line-height: 1.25;
+  padding: 3px 5px;
+  border-radius: 2px;
+  border-left: 2px solid var(--gold);
+  background: #fdf7e9;
+  color: #7a5f1f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cal-event b { font-weight: 600; display: block; font-size: 10.5px; }
+.cal-event span { display: block; font-size: 10px; opacity: .85; }
+.cal-event--live { border-left-color: var(--navy); background: #eef2f6; color: #24405a; }
+.cal-event--live.is-mine { background: var(--navy); border-left-color: var(--gold); color: #fff; }
+.agenda-layout.is-chooser .cal-event { padding: 3px 3px; }
+.agenda-layout.is-chooser .cal-event b, .agenda-layout.is-chooser .cal-event span { font-size: 9.5px; }
+.cal-legend { display: flex; gap: 20px; align-items: center; padding-top: 14px; font-size: 11.5px; color: var(--muted); }
+.cal-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.cal-legend i { width: 7px; height: 7px; border-radius: 1px; display: inline-block; background: var(--gold); }
+.cal-legend .live { background: var(--navy); }
+.cal-legend .live--open { background: #cfd9e3; }
+.cal-legend .count { margin-left: auto; }
+
+.day-pop {
+  position: absolute;
+  z-index: 25;
+  width: 250px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  padding: 6px;
+}
+.day-pop__label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 7px 10px 5px; }
+.day-pop button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+.day-pop button:hover { background: #f7f5f0; }
+.day-pop button:first-of-type { background: var(--gold-tint); }
+.day-pop button .icon { width: 15px; height: 15px; color: var(--gold-dark); }
+.day-pop button:last-child .icon { color: var(--muted); }
+.day-pop button .icon.chev { width: 13px; height: 13px; margin-left: auto; color: var(--muted); }
+
+.day-card { background: #fff; border: 1px solid #d9bd85; border-radius: var(--r-md); padding: 20px 22px; }
+.day-card__label { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dark); }
+.day-card h2 { font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1.22; color: var(--ink); margin-top: 7px; }
+.day-card .pill { margin-top: 9px; }
+.day-card__desc { font-size: 12px; color: var(--muted); line-height: 1.65; margin-top: 10px; }
+.day-card__times { display: grid; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.day-card__times li { display: flex; gap: 9px; align-items: center; font-size: 12px; color: var(--body); }
+.day-card__times .icon { width: 15px; height: 15px; color: var(--muted); }
+.day-card__coach { display: flex; gap: 9px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.day-card__coach img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.day-card__coach b { display: block; font-size: 12px; font-weight: 600; color: var(--ink); }
+.day-card__coach span { display: block; font-size: 11px; color: var(--muted); }
+.day-card__note { font-size: 11px; color: var(--muted); line-height: 1.6; margin-top: 10px; }
+.day-card .btn { margin-top: 12px; }
+.day-card__hint { display: flex; gap: 9px; font-size: 11.5px; color: var(--muted); background: #f7f6f2; border-radius: 5px; padding: 9px 10px; margin-top: 10px; line-height: 1.5; }
+.day-card__hint .icon { width: 14px; height: 14px; color: var(--gold-dark); }
+
+.direct-card { background: var(--cream); border: 1px solid rgba(199, 154, 59, .22); border-radius: var(--r-md); padding: 20px 22px; margin-top: 16px; }
+.direct-card h3 { font-family: var(--serif); font-size: 23px; font-weight: 500; color: var(--ink); }
+.direct-card p { font-size: 12px; color: #6d5a2c; line-height: 1.65; margin-top: 8px; }
+.direct-card .link-arrow { margin-top: 10px; font-size: 11.5px; }
+
+.replays { margin-top: 34px; }
+.replays__head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
+.replays h2 { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--ink); }
+.replays__head a { font-size: 12px; color: var(--muted); }
+.replay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.agenda-layout.is-chooser .replay-grid { grid-template-columns: 1fr; }
+.replay-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; display: flex; gap: 16px; }
+.replay-card__media { position: relative; display: block; width: 136px; height: 92px; border-radius: 4px; overflow: hidden; flex: 0 0 auto; }
+.replay-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.replay-card__play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; }
+.replay-card__play .icon { width: 20px; height: 20px; fill: #fff; stroke: none; }
+.replay-card__date { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dark); }
+.replay-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); margin-top: 4px; line-height: 1.3; }
+.replay-card p { font-size: 11px; color: var(--muted); margin-top: 3px; }
+.replay-card a { display: inline-block; font-size: 11.5px; color: var(--navy); margin-top: 7px; }
+
+.agenda-note {
+  margin-top: 18px;
+  background: #eef2f6;
+  border-radius: 6px;
+  padding: 12px 15px;
+  font-size: 10.5px;
+  color: #44586c;
+  line-height: 1.6;
+}

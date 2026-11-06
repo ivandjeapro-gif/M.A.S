@@ -1,0 +1,184 @@
+/* =========================================================
+   Espace de cours — lecteur, ressources, exercice, quiz
+   ========================================================= */
+
+.player-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.player-head .page-eyebrow { display: block; margin-top: 18px; }
+.lesson-title { font-family: var(--serif); font-size: 37px; font-weight: 400; line-height: 1.2; letter-spacing: -.01em; margin-top: 8px; }
+.lesson-meta { font-size: 12.5px; color: var(--muted); margin-top: 7px; }
+
+.player-grid { display: grid; grid-template-columns: minmax(0, 1fr) 292px; gap: 25px; margin-top: 24px; align-items: start; }
+
+.video-frame { position: relative; border-radius: 8px; overflow: hidden; background: #12212e; aspect-ratio: 16 / 9; }
+.video-frame img { width: 100%; height: 100%; object-fit: cover; opacity: .92; }
+.video-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,34,56,.15), rgba(8,34,56,.05) 45%, rgba(8,34,56,.55)); }
+.video-badge { position: absolute; top: 14px; left: 14px; z-index: 2; background: rgba(8, 34, 56, .78); color: #fff; font-size: 12px; padding: 4px 10px; border-radius: 3px; }
+.video-play {
+  position: absolute;
+  z-index: 3;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .55);
+  background: rgba(8, 34, 56, .55);
+  color: #fff;
+  display: grid; place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(3px);
+  transition: background .18s ease, transform .18s ease;
+}
+.video-play:hover { background: rgba(8, 34, 56, .8); transform: translate(-50%, -50%) scale(1.04); }
+.video-play .icon { width: 22px; height: 22px; margin-left: 3px; fill: currentColor; stroke: none; }
+.video-caption {
+  position: absolute;
+  z-index: 2;
+  left: 18px; right: 18px; bottom: 58px;
+  text-align: center;
+  font-size: 12.5px;
+  color: #fff;
+}
+.video-caption span { background: rgba(8, 34, 56, .8); padding: 4px 12px; border-radius: 3px; }
+.video-controls {
+  position: absolute;
+  z-index: 2;
+  left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(8,34,56,0), rgba(8,34,56,.85));
+  padding: 20px 16px 10px;
+  color: #fff;
+}
+.video-controls__row { display: flex; align-items: center; gap: 12px; font-size: 11px; color: rgba(255,255,255,.85); }
+.video-controls .icon { width: 15px; height: 15px; }
+.video-scrub { height: 3px; background: rgba(255,255,255,.25); border-radius: 3px; margin-bottom: 9px; }
+.video-scrub span { display: block; height: 100%; width: 47%; background: var(--gold); border-radius: 3px; }
+.video-controls__spacer { margin-left: auto; }
+.video-controls__chip { border: 1px solid rgba(255,255,255,.35); border-radius: 3px; padding: 1px 6px; font-size: 10px; }
+
+.lesson-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; }
+.lesson-tabs { display: flex; gap: 28px; border-bottom: 1px solid var(--line); margin-top: 18px; }
+.lesson-tabs button { background: none; border: 0; padding: 13px 0; font-size: 13px; color: var(--muted); cursor: pointer; position: relative; }
+.lesson-tabs button.is-active { color: var(--navy); font-weight: 600; }
+.lesson-tabs button.is-active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1.5px; background: var(--navy); }
+.lesson-tabs .count { font-size: 11px; color: var(--faint); }
+
+.lesson-body h2 { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--ink); margin-top: 24px; }
+.lesson-body p { font-size: 13.5px; line-height: 1.75; color: var(--body); margin-top: 11px; max-width: 720px; }
+.tip {
+  display: flex; gap: 10px;
+  background: var(--cream);
+  border: 1px solid rgba(199, 154, 59, .18);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: #6b5726;
+}
+.tip .icon { width: 15px; height: 15px; color: var(--gold-dark); margin-top: 2px; }
+
+.resources { margin-top: 20px; }
+.resources h2 { font-family: var(--serif); font-size: 23px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+.resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.resource {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.resource .icon { width: 17px; height: 17px; color: var(--gold-dark); }
+.resource b { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.resource span { display: block; font-size: 10.5px; color: var(--muted); }
+.resource .dl { margin-left: auto; color: var(--muted); }
+.resource .dl:hover { color: var(--navy); }
+
+.work-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px 22px; margin-top: 18px; }
+.work-card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.work-card .eyebrow { font-size: 10px; }
+.work-card h2 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--ink); margin-top: 8px; }
+.work-card p { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.65; max-width: 640px; }
+.dropzone {
+  display: flex; align-items: center; gap: 14px;
+  border: 1px dashed #d3cfc5;
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-top: 16px;
+  background: #fdfcf9;
+}
+.dropzone .icon { width: 20px; height: 20px; color: var(--muted); }
+.dropzone b { display: block; font-size: 12px; color: var(--ink); font-weight: 600; }
+.dropzone span { display: block; font-size: 10.5px; color: var(--muted); }
+.dropzone .btn { margin-left: auto; }
+
+.quiz-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px 22px; margin-top: 18px; }
+.quiz-card__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.quiz-card .eyebrow { font-size: 10px; }
+.quiz-card__count { font-size: 11px; color: var(--muted); }
+.quiz-card h2 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--ink); margin-top: 8px; }
+.quiz-card > p { font-size: 12.5px; color: var(--muted); margin-top: 6px; max-width: 620px; }
+.quiz-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+.quiz-option {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: var(--body);
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quiz-option .radio { width: 11px; height: 11px; border-radius: 50%; border: 1px solid #c9c5bb; flex: 0 0 auto; }
+.quiz-option:hover { border-color: #cfc9bc; }
+.quiz-option.is-selected { background: var(--gold-tint); border-color: var(--gold); color: var(--ink); }
+.quiz-option.is-selected .radio { border-color: var(--gold); box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 6px var(--gold); }
+.quiz-card__foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 14px; }
+.quiz-card__foot p { font-size: 10.5px; color: var(--faint); }
+
+/* Rail */
+.rail-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px; }
+.rail-card + .rail-card { margin-top: 14px; }
+.rail-card h2 { font-family: var(--serif); font-size: 23px; font-weight: 400; color: var(--ink); }
+.rail-progress { margin-top: 12px; }
+.rail-progress .progress { margin-top: 5px; }
+.rail-progress__label { font-size: 10.5px; color: var(--muted); display: flex; justify-content: space-between; }
+.rail-check { display: grid; gap: 7px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.rail-check li { display: flex; gap: 8px; font-size: 11.5px; color: var(--body); align-items: flex-start; }
+.rail-check .icon { width: 13px; height: 13px; color: var(--green); margin-top: 1px; }
+.rail-check li.is-current { background: var(--gold-tint); margin: 0 -8px; padding: 6px 8px; border-radius: 4px; color: #7a5f1f; }
+.rail-section-title { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.rail-lessons { display: grid; gap: 4px; margin-top: 8px; }
+.rail-lesson {
+  width: 100%;
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--body);
+  background: #f7f6f2;
+  border: 1px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.rail-lesson:hover { border-color: #ddd8cc; }
+.rail-lesson.is-active { background: var(--gold-tint); border-color: #e5d3ac; color: #7a5f1f; }
+.rail-lesson.is-locked { color: var(--faint); background: transparent; border-color: var(--line-soft); }
+.rail-lesson .icon { width: 13px; height: 13px; color: var(--muted); }
+.rail-lesson b { display: block; font-size: 11.5px; font-weight: 600; line-height: 1.3; }
+.rail-lesson span { display: block; font-size: 10px; color: var(--muted); }
+
+.notes-card { background: var(--cream); border: 1px solid rgba(199, 154, 59, .2); border-radius: var(--r-md); padding: 18px 20px; }
+.notes-card__head { display: flex; justify-content: space-between; align-items: center; }
+.notes-card h2 { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); }
+.notes-card__text { font-size: 11px; color: #6d5a2c; line-height: 1.6; margin-top: 10px; }
+.notes-card__hint { font-size: 10px; color: #8a7749; margin-top: 3px; }
+.notes-card__add { display: inline-block; background: none; border: 0; padding: 0; font-size: 11px; font-weight: 600; color: var(--navy); margin-top: 10px; cursor: pointer; }
+.notes-card__add:hover { text-decoration: underline; }
+.ask { display: flex; gap: 8px; align-items: center; width: 100%; background: none; border: 0; text-align: left; font-size: 11.5px; color: var(--muted); margin-top: 14px; padding: 0 4px; cursor: pointer; }
+.ask:hover { color: var(--navy); }
+.ask .icon { width: 15px; height: 15px; color: var(--gold-dark); }

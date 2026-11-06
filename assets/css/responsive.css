@@ -1,0 +1,103 @@
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .hero__copy { padding-right: 40px; }
+  .dash-grid, .dash-bottom { grid-template-columns: 1fr; }
+  .detail-grid, .player-grid, .agenda-layout { grid-template-columns: minmax(0, 1fr) 300px; }
+  .cat-layout { grid-template-columns: 200px 1fr; gap: 26px; }
+  .instructors__grid { gap: 30px; }
+}
+
+@media (max-width: 1024px) {
+  .container { padding: 0 28px; }
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__media { min-height: 340px; }
+  .hero__copy { padding: 52px 0 44px; }
+  .features__grid { grid-template-columns: 1fr 1fr; }
+  .feature { padding: 16px 0; border-left: 0; }
+  .feature:nth-child(2n) { padding-left: 24px; border-left: 1px solid rgba(199, 154, 59, .16); }
+  .course-grid, .cat-grid { grid-template-columns: 1fr 1fr; }
+  .pedagogy__head { grid-template-columns: 1fr; gap: 16px; }
+  .pedagogy__head p { justify-self: start; }
+  .pedagogy__cards { grid-template-columns: 1fr 1fr; }
+  .split, .pricing__grid, .faq__grid { grid-template-columns: 1fr; gap: 30px; }
+  .instructors__grid { grid-template-columns: 1fr 1fr; }
+  .instructor-list { grid-column: 1 / -1; }
+  .course-hero { grid-template-columns: 1fr 240px; }
+  .detail-grid, .player-grid, .agenda-layout, .cert-section { grid-template-columns: 1fr; }
+  .app-shell { grid-template-columns: 210px 1fr; }
+  .sidebar { padding: 14px 12px; }
+  .results-row { grid-template-columns: 1fr 90px 70px 90px; }
+  .plan-total { grid-template-columns: 1fr 1fr; }
+  .plan-total p { grid-column: 1 / -1; text-align: left; }
+  .cat-hero h1 { font-size: 34px; }
+}
+
+@media (max-width: 760px) {
+  .site-nav, .site-header__login { display: none; }
+  .site-header__inner { height: 58px; gap: 16px; }
+  .site-footer__top { flex-direction: column; }
+  .site-footer__bottom { flex-direction: column; }
+  .section { padding: 44px 0; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+  .hero h1 { font-size: 36px; }
+  .hero__actions { flex-wrap: wrap; }
+  .features__grid { grid-template-columns: 1fr; }
+  .feature:nth-child(2n) { padding-left: 0; border-left: 0; }
+  .course-grid, .cat-grid, .pedagogy__cards, .live__grid, .replay-grid, .resource-grid, .quiz-options { grid-template-columns: 1fr; }
+  .cat-layout { grid-template-columns: 1fr; }
+  .filters { order: 2; }
+  .cat-cta__inner, .cta-band__inner, .results-cta { flex-direction: column; align-items: flex-start; }
+  .results-cta .btn { margin-left: 0; }
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .app-content { padding: 20px 16px 32px; }
+  .topbar { padding: 0 16px; }
+  .stats { grid-template-columns: 1fr; }
+  .resume-card__top { grid-template-columns: 1fr; }
+  .resume-card__media { min-height: 150px; }
+  .page-title { font-size: 27px; }
+  .course-hero { grid-template-columns: 1fr; }
+  .course-hero__media { min-height: 150px; }
+  .objectives { grid-template-columns: 1fr; }
+  .course-line { flex-direction: column; align-items: flex-start; }
+  .course-line img { width: 100%; height: 150px; }
+  .course-line__side { justify-items: start; }
+  .results-row { grid-template-columns: 1fr 70px; font-size: 10px; }
+  .results-row > :nth-child(2), .results-row > :nth-child(4) { display: none; }
+  .slot-row { grid-template-columns: 1fr 1fr; }
+  .slot-row > :nth-child(5) { grid-column: 2; justify-self: end; }
+  .modal__foot { flex-direction: column; align-items: flex-start; }
+  .plan-total { grid-template-columns: 1fr; }
+  .cal-cell { min-height: 62px; }
+  .cal-event b { font-size: 7px; }
+  .cal-event span { display: none; }
+  .cat-hero { padding: 32px 0; }
+  .cat-hero h1 { font-size: 28px; }
+  .cat-search { flex-wrap: wrap; }
+  .cat-search input { min-width: 150px; }
+  .certificate { padding: 6px; }
+  .certificate__inner { padding: 20px 16px; }
+  .certificate h3 { font-size: 20px; }
+  .certificate__name { font-size: 19px; }
+}
+
+@media (max-width: 520px) {
+  .container { padding: 0 18px; }
+  .hero h1 { font-size: 31px; }
+  .hero__media { min-height: 260px; }
+  .hero__caption { left: 16px; right: 16px; bottom: 16px; }
+  .page-head { flex-direction: column; }
+  .page-head__aside { padding-top: 0; }
+  .dash-grid, .dash-bottom { gap: 12px; }
+  .course-hero__copy { padding: 20px; }
+  .course-hero h1 { font-size: 25px; }
+  .lesson-title { font-size: 25px; }
+  .player-head { flex-direction: column; gap: 10px; }
+  .video-play { width: 50px; height: 50px; }
+  .cal-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .cal-cell { min-height: 54px; padding: 4px 3px; }
+  .day-pop { width: 220px; }
+}
