@@ -233,6 +233,202 @@
 .profile-grid span { display: block; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .profile-grid b { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); margin-top: 2px; }
 
+/* ---------- Profil apprenant ---------- */
+.profile-modal { max-width: 700px; }
+.profile-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 28px 24px;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(140deg, #0d304f 0%, #0b2a45 55%, #082238 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.profile-hero::after {
+  content: '';
+  position: absolute;
+  top: -120px; right: -90px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199, 154, 59, .32), transparent 62%);
+  pointer-events: none;
+}
+.profile-hero__avatar {
+  position: relative;
+  z-index: 1;
+  width: 60px; height: 60px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid rgba(216, 180, 100, .75);
+  background: rgba(255, 255, 255, .08);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.profile-hero__id { position: relative; z-index: 1; flex: 1; min-width: 0; }
+.profile-hero__id .eyebrow { font-size: 9.5px; color: var(--gold-soft); }
+.profile-hero__id h2 {
+  margin-top: 5px;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fff;
+}
+.profile-hero__id p { margin-top: 4px; font-size: 11.5px; color: rgba(233, 240, 246, .68); }
+.profile-hero__side {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+  padding-right: 30px;
+  text-align: right;
+}
+.profile-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 9px;
+  border: 1px solid rgba(216, 180, 100, .55);
+  border-radius: 999px;
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+.profile-hero__since { font-size: 10px; color: rgba(233, 240, 246, .5); }
+.profile-hero .modal__close {
+  position: absolute;
+  top: 12px; right: 12px;
+  z-index: 2;
+  color: rgba(255, 255, 255, .7);
+}
+.profile-hero .modal__close:hover { background: rgba(255, 255, 255, .1); color: #fff; }
+
+.profile-body { padding-top: 18px; }
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2px;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  background: #faf9f5;
+  overflow: hidden;
+}
+.profile-stat { display: flex; align-items: center; gap: 11px; padding: 13px 16px; }
+.profile-stat + .profile-stat { border-left: 1px solid var(--line-soft); }
+.profile-stat__ico {
+  width: 32px; height: 32px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--gold-dark);
+}
+.profile-stat__ico .icon { width: 15px; height: 15px; }
+.profile-stat b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.profile-stat div > span { display: block; margin-top: 1px; font-size: 10px; color: var(--muted); }
+
+.profile-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0 10px;
+}
+.profile-section-head h3 { font-size: 13px; font-weight: 600; color: var(--ink); }
+.profile-section-head .pill { height: 20px; font-size: 9.5px; }
+
+.profile-details { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.profile-detail {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  background: #fff;
+}
+.profile-detail__ico {
+  width: 30px; height: 30px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--gold-tint);
+  color: var(--gold-dark);
+}
+.profile-detail__ico .icon { width: 14px; height: 14px; }
+.profile-detail small {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.profile-detail b {
+  display: block;
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.profile-course {
+  display: grid;
+  grid-template-columns: 1fr 160px auto;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid #ecdfc4;
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  background: var(--gold-tint);
+}
+.profile-course__copy .eyebrow { font-size: 9px; color: var(--gold-dark); }
+.profile-course__copy h3 {
+  margin-top: 3px;
+  font-family: var(--serif);
+  font-size: 16.5px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.profile-course__copy p { margin-top: 3px; font-size: 10.5px; color: #7a6a4b; }
+.profile-course__progress > span { display: block; margin-bottom: 5px; font-size: 10px; color: #7a6a4b; }
+.profile-course__progress b { font-weight: 600; color: var(--ink); }
+.profile-course .progress { margin-top: 0; background: rgba(11, 42, 69, .12); }
+.profile-course .btn { white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .profile-hero { gap: 13px; padding: 22px 20px 20px; }
+  .profile-hero__avatar { width: 50px; height: 50px; font-size: 13px; }
+  .profile-hero__id h2 { font-size: 25px; }
+  .profile-hero__side { display: none; }
+  .profile-body { padding: 16px 20px 8px; }
+  .profile-stats { grid-template-columns: 1fr; }
+  .profile-stat + .profile-stat { border-left: 0; border-top: 1px solid var(--line-soft); }
+  .profile-details { grid-template-columns: 1fr; }
+  .profile-course { grid-template-columns: 1fr auto; gap: 12px; }
+  .profile-course__progress { grid-column: 1 / -1; grid-row: 2; }
+}
+
 .search-results { margin-top: 12px; display: grid; gap: 2px; max-height: 330px; overflow-y: auto; }
 .search-group { font-size: 9.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 10px 4px 4px; }
 .search-item { display: flex; align-items: center; gap: 11px; padding: 9px 10px; border-radius: 5px; }

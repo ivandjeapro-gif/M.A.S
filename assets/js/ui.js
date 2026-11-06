@@ -252,23 +252,78 @@ function openUserMenu(anchor) {
 
 function openProfileModal() {
   openModal(`
-    <div class="modal__head">
-      <div><span class="eyebrow">Mon compte</span><h2>${esc(USER.first)} ${esc(USER.last)}</h2><p>${esc(USER.role)} · Espace démo</p></div>
+    <div class="profile-hero">
+      <div class="profile-hero__avatar" aria-hidden="true">${USER.initials}</div>
+      <div class="profile-hero__id">
+        <span class="eyebrow">Mon compte</span>
+        <h2>${esc(USER.first)} ${esc(USER.last)}</h2>
+        <p>Étudiante · Planification minière à ciel ouvert</p>
+      </div>
+      <div class="profile-hero__side">
+        <span class="profile-hero__badge">Compte démo</span>
+        <span class="profile-hero__since">Inscrite en septembre 2026</span>
+      </div>
       <button class="modal__close" data-close aria-label="Fermer">${icon('x')}</button>
     </div>
-    <div class="modal__body">
-      <div class="profile-grid">
-        <div><span>Courriel</span><b>aminata.traore@baobab.demo</b></div>
-        <div><span>Formation suivie</span><b>Planification minière à ciel ouvert</b></div>
-        <div><span>Fuseau horaire</span><b>GMT (UTC+0) · Abidjan / Dakar</b></div>
-        <div><span>Offre</span><b>Étudiante · tarif réduit</b></div>
+    <div class="modal__body profile-body">
+      <div class="profile-stats">
+        <div class="profile-stat">
+          <span class="profile-stat__ico">${icon('book')}</span>
+          <div><b>2</b><span>Formations suivies</span></div>
+        </div>
+        <div class="profile-stat">
+          <span class="profile-stat__ico">${icon('clock')}</span>
+          <div><b>16 h</b><span>Temps d’apprentissage</span></div>
+        </div>
+        <div class="profile-stat">
+          <span class="profile-stat__ico">${icon('award')}</span>
+          <div><b>1</b><span>Certificat obtenu</span></div>
+        </div>
       </div>
-      <p class="muted-note" style="margin-top:14px">Profil simulé pour la démonstration. Aucune donnée réelle n’est collectée.</p>
+
+      <div class="profile-section-head">
+        <h3>Informations du compte</h3>
+        <span class="pill pill-cream">Profil simulé</span>
+      </div>
+      <div class="profile-details">
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('mail')}</span>
+          <span><small>Courriel</small><b>aminata.traore@baobab.demo</b></span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('globe')}</span>
+          <span><small>Fuseau horaire</small><b>GMT (UTC+0) · Abidjan / Dakar</b></span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('graduation')}</span>
+          <span><small>Offre</small><b>Étudiante · tarif réduit</b></span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('calendar')}</span>
+          <span><small>Rythme</small><b>2 sessions par semaine · à votre rythme</b></span>
+        </div>
+      </div>
+
+      <div class="profile-course">
+        <div class="profile-course__copy">
+          <span class="eyebrow">Parcours en cours</span>
+          <h3>Planification minière à ciel ouvert</h3>
+          <p>Module 5 · Production &amp; suivi — reprendre à 09:42 / 18:30</p>
+        </div>
+        <div class="profile-course__progress">
+          <span><b>67 %</b> terminé</span>
+          <div class="progress"><span style="width:67%"></span></div>
+        </div>
+        <a class="btn btn-navy btn-sm" href="#/app/cours" data-close>Reprendre</a>
+      </div>
     </div>
     <div class="modal__foot">
-      <p>Les préférences de contenu ne sont pas modifiables dans cette démonstration.</p>
-      <div class="modal__actions"><button class="btn btn-navy" data-close>Fermer</button></div>
-    </div>`, 'modal--narrow');
+      <p>Aucune donnée réelle n’est collectée. Les préférences de contenu ne sont pas modifiables dans cette démonstration.</p>
+      <div class="modal__actions">
+        <a class="btn btn-outline" href="#/app/resultats" data-close>Mes résultats</a>
+        <button class="btn btn-navy" data-close>Fermer</button>
+      </div>
+    </div>`, 'modal--narrow profile-modal');
 }
 
 /* ---------- Contact & informations ---------- */
