@@ -39,7 +39,7 @@ function getCourse(id) {
 }
 
 function userAvatar(extra = '') {
-  return `<div class="user-avatar ${extra}" aria-hidden="true">${USER.initials}</div>`;
+  return `<div class="user-avatar ${extra}" aria-hidden="true"><img src="assets/img/avatar-aminata.jpg" alt="" /></div>`;
 }
 
 /* ---------- Header / footer publics ---------- */
@@ -253,72 +253,74 @@ function openUserMenu(anchor) {
 function openProfileModal() {
   openModal(`
     <div class="profile-hero">
-      <div class="profile-hero__avatar" aria-hidden="true">${USER.initials}</div>
+      <div class="profile-photo">
+        <img src="assets/img/avatar-aminata.jpg" alt="Portrait d’${esc(USER.first)} ${esc(USER.last)}" />
+        <span class="profile-photo__check" aria-label="Compte vérifié">${icon('check')}</span>
+      </div>
       <div class="profile-hero__id">
-        <span class="eyebrow">Mon compte</span>
+        <span class="eyebrow">Profil apprenant</span>
         <h2>${esc(USER.first)} ${esc(USER.last)}</h2>
-        <p>Étudiante · Planification minière à ciel ouvert</p>
+        <p>Étudiante en géologie · 26 ans</p>
+        <span class="profile-hero__ref">${icon('award')} N° apprenant BAO-2026-00184</span>
       </div>
       <div class="profile-hero__side">
-        <span class="profile-hero__badge">Compte démo</span>
-        <span class="profile-hero__since">Inscrite en septembre 2026</span>
+        <span class="profile-hero__badge">Compte vérifié</span>
+        <span class="profile-hero__since">Inscrite le 12 septembre 2026</span>
       </div>
       <button class="modal__close" data-close aria-label="Fermer">${icon('x')}</button>
     </div>
     <div class="modal__body profile-body">
-      <div class="profile-stats">
-        <div class="profile-stat">
-          <span class="profile-stat__ico">${icon('book')}</span>
-          <div><b>2</b><span>Formations suivies</span></div>
+      <div class="profile-section-head">
+        <h3>Pièce d’identité</h3>
+        <span class="pill pill-cream">CNI</span>
+      </div>
+      <div class="profile-id">
+        <div class="profile-id__main">
+          <span class="profile-id__label">Carte nationale d’identité</span>
+          <b class="profile-id__num">CI-0845-1720-33</b>
+          <span class="profile-id__meta">Délivrée le 12 septembre 2021 · Expire le 12 septembre 2031</span>
         </div>
-        <div class="profile-stat">
-          <span class="profile-stat__ico">${icon('clock')}</span>
-          <div><b>16 h</b><span>Temps d’apprentissage</span></div>
-        </div>
-        <div class="profile-stat">
-          <span class="profile-stat__ico">${icon('award')}</span>
-          <div><b>1</b><span>Certificat obtenu</span></div>
-        </div>
+        <span class="profile-id__stamp">${icon('lock')} Document contrôlé</span>
       </div>
 
-      <div class="profile-section-head">
-        <h3>Informations du compte</h3>
-        <span class="pill pill-cream">Profil simulé</span>
-      </div>
+      <div class="profile-section-head"><h3>Coordonnées</h3></div>
       <div class="profile-details">
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('phone')}</span>
+          <span><small>Téléphone</small><b>+225 07 08 45 17 20</b></span>
+        </div>
         <div class="profile-detail">
           <span class="profile-detail__ico">${icon('mail')}</span>
           <span><small>Courriel</small><b>aminata.traore@baobab.demo</b></span>
         </div>
-        <div class="profile-detail">
-          <span class="profile-detail__ico">${icon('globe')}</span>
-          <span><small>Fuseau horaire</small><b>GMT (UTC+0) · Abidjan / Dakar</b></span>
-        </div>
-        <div class="profile-detail">
-          <span class="profile-detail__ico">${icon('graduation')}</span>
-          <span><small>Offre</small><b>Étudiante · tarif réduit</b></span>
-        </div>
-        <div class="profile-detail">
-          <span class="profile-detail__ico">${icon('calendar')}</span>
-          <span><small>Rythme</small><b>2 sessions par semaine · à votre rythme</b></span>
+        <div class="profile-detail profile-detail--wide">
+          <span class="profile-detail__ico">${icon('map-pin')}</span>
+          <span><small>Adresse</small><b>Cocody Angré, Abidjan · Côte d’Ivoire</b></span>
         </div>
       </div>
 
-      <div class="profile-course">
-        <div class="profile-course__copy">
-          <span class="eyebrow">Parcours en cours</span>
-          <h3>Planification minière à ciel ouvert</h3>
-          <p>Module 5 · Production &amp; suivi — reprendre à 09:42 / 18:30</p>
+      <div class="profile-section-head"><h3>Informations personnelles</h3></div>
+      <div class="profile-details">
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('calendar')}</span>
+          <span><small>Date de naissance</small><b>14 mars 1998</b></span>
         </div>
-        <div class="profile-course__progress">
-          <span><b>67 %</b> terminé</span>
-          <div class="progress"><span style="width:67%"></span></div>
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('globe')}</span>
+          <span><small>Nationalité</small><b>Ivoirienne</b></span>
         </div>
-        <a class="btn btn-navy btn-sm" href="#/app/cours" data-close>Reprendre</a>
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('graduation')}</span>
+          <span><small>Établissement</small><b>Université Félix Houphouët-Boigny</b></span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail__ico">${icon('book')}</span>
+          <span><small>Offre</small><b>Étudiante · tarif réduit</b></span>
+        </div>
       </div>
     </div>
     <div class="modal__foot">
-      <p>Aucune donnée réelle n’est collectée. Les préférences de contenu ne sont pas modifiables dans cette démonstration.</p>
+      <p>Données de démonstration. Aucune information réelle n’est collectée ni transmise.</p>
       <div class="modal__actions">
         <a class="btn btn-outline" href="#/app/resultats" data-close>Mes résultats</a>
         <button class="btn btn-navy" data-close>Fermer</button>

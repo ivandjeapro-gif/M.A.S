@@ -66,7 +66,9 @@
   font-weight: 600;
   letter-spacing: .03em;
   flex: 0 0 auto;
+  overflow: hidden;
 }
+.user-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .sidebar__user b { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.3; }
 .sidebar__user span { display: block; font-size: 11px; color: var(--muted); }
 
