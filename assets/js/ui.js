@@ -57,7 +57,7 @@ function siteHeader(active = '') {
           ${item('direct', 'Sessions en direct', '#/sessions')}
         </nav>
         <div class="site-header__actions">
-          <a class="site-header__login" href="#/app">Se connecter</a>
+          <a class="site-header__login" href="${isAuthed() ? '#/app' : '#/connexion'}">${isAuthed() ? 'Mon espace' : 'Se connecter'}</a>
           <a class="btn btn-navy" href="#/catalogue">Explorer les formations ${icon('arrow-up-right')}</a>
         </div>
       </div>
@@ -244,6 +244,7 @@ function openUserMenu(anchor) {
   menu.querySelector('[data-user="logout"]').addEventListener('click', () => {
     menu.remove();
     closeModal();
+    clearAuth();
     navigate('#/');
     toast('Déconnexion simulée — retour au site public.');
   });

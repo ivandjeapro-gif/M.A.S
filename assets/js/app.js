@@ -28,19 +28,29 @@ function router() {
     renderSessions();
   } else if (route.startsWith('/sessions/')) {
     renderSessionDetail(route.split('/')[2]);
-  } else if (route === '/app') {
-    renderDashboard();
-  } else if (route === '/app/formations') {
-    renderMyCourses();
-  } else if (route === '/app/cours') {
-    renderPlayer();
-  } else if (route === '/app/agenda') {
-    state.agendaMode = params.get('mode') || 'modules';
-    if (params.get('day')) state.selectedDay = params.get('day');
-    renderAgenda();
-  } else if (route === '/app/resultats') {
-    state.resultsTab = params.get('tab') || 'overview';
-    renderResults();
+  } else if (route === '/connexion') {
+    renderAuth();
+  } else if (route === '/app' || route.startsWith('/app/')) {
+    if (!isAuthed()) {
+      location.replace(`#/connexion?next=${encodeURIComponent(raw)}`);
+      return;
+    }
+    if (route === '/app') {
+      renderDashboard();
+    } else if (route === '/app/formations') {
+      renderMyCourses();
+    } else if (route === '/app/cours') {
+      renderPlayer();
+    } else if (route === '/app/agenda') {
+      state.agendaMode = params.get('mode') || 'modules';
+      if (params.get('day')) state.selectedDay = params.get('day');
+      renderAgenda();
+    } else if (route === '/app/resultats') {
+      state.resultsTab = params.get('tab') || 'overview';
+      renderResults();
+    } else {
+      renderDashboard();
+    }
   } else {
     renderHome();
   }
